@@ -2,3 +2,4 @@ serial
 pyowm
 configparser
 influxdb
+crcmod
