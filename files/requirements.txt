@@ -1,0 +1,4 @@
+serial
+pyowm
+configparser
+influxdb
