@@ -7,4 +7,4 @@ COPY config/* /app/
 WORKDIR /app
 RUN pip install -r requirements.txt
 
-CMD python ./p1logger.py
+CMD python ./DockerP1logger.py

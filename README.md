@@ -1,12 +1,12 @@
-# p1logger
+# DockerP1logger
 
 sudo apt install gnupg2 pass
-docker image build -t p1logger  .
+docker image build -t DockerP1logger  .
 docker login -u revenberg
-docker image push revenberg/p1logger:latest
+docker image push revenberg/DockerP1logger:latest
 
-docker run revenberg/p1logger
+docker run revenberg/DockerP1logger
 
 docker exec -it ??? /bin/sh
 
-docker push revenberg/p1logger:
+docker push revenberg/DockerP1logger:
