@@ -1,17 +1,21 @@
 #!/bin/bash
 
-git pull
-chmod +x build.sh
+rc=$(git remote show origin |  grep "local out of date" | wc -l)
 
-docker image build -t revenberg/dockerp1logger .
+if [ $rc -ne "0" ]; then
+    git pull
+    chmod +x build.sh
 
-docker push revenberg/dockerp1logger
+    docker image build -t revenberg/p1logger .
 
-# testing: 
+    docker push revenberg/p1logger
 
-echo "==========================================================="
-echo "=                                                         ="
-echo "=          docker run revenberg/dockerp1logger                ="
-echo "=                                                         ="
-echo "==========================================================="
-# docker run revenberg/dockerp1logger
+    # testing: 
+
+    echo "==========================================================="
+    echo "=                                                         ="
+    echo "=          docker run revenberg/p1logger                  ="
+    echo "=                                                         ="
+    echo "==========================================================="
+    # docker run revenberg/p1logger
+fi
