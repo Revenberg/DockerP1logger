@@ -9,7 +9,7 @@ import configparser
 from influxdb import InfluxDBClient
 
 config = configparser.RawConfigParser(allow_no_value=True)
-config.read("DockerP1logger_config.ini")
+config.read("p1logger_config.ini")
 
 ###########################
 # Variables
