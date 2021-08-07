@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# version 7-8-2021
+# version 2021-08-07 15:20
 
 cd ~/dockerp1logger
 rc=$(git remote show origin |  grep "local out of date" | wc -l)
