@@ -22,3 +22,5 @@ if [ $rc -ne "0" ]; then
     echo "==========================================================="
     # docker run revenberg/p1logger
 fi
+
+cd -
