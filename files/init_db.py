@@ -47,9 +47,9 @@ try:
 
     print( dbclient.get_list_continuous_queries() )
     
-    DockerP1logger_select_clause = 'SELECT mean("+P") as "+P",mean("+P1") as "+P1",mean("+P2") as "+P2",mean("+P3") as "+P3",mean("+T") as "+T",mean("+T1") as "+T1",mean("+T2") as "+T2",mean("-P") as "-P",mean("-P1") as "-P1",mean("-P2") as "-P2",mean("-P3") as "-P3",mean("-T") as "-T",mean("-T1") as "-T1",mean("-T2") as "-T2",mean("G") as "G",mean("P") as "P"'
-    dbclient.create_continuous_query("DockerP1logger_mean60", DockerP1logger_select_clause + ' INTO "60_days"."DockerP1logger" FROM "DockerP1logger" GROUP BY time(15m)', influx_database )
-    dbclient.create_continuous_query("DockerP1logger_meaninf", DockerP1logger_select_clause + ' INTO "infinite"."DockerP1logger" FROM "DockerP1logger" GROUP BY time(30m)', influx_database )
+    p1logger_select_clause = 'SELECT mean("+P") as "+P",mean("+P1") as "+P1",mean("+P2") as "+P2",mean("+P3") as "+P3",mean("+T") as "+T",mean("+T1") as "+T1",mean("+T2") as "+T2",mean("-P") as "-P",mean("-P1") as "-P1",mean("-P2") as "-P2",mean("-P3") as "-P3",mean("-T") as "-T",mean("-T1") as "-T1",mean("-T2") as "-T2",mean("G") as "G",mean("P") as "P"'
+    dbclient.create_continuous_query("p1logger_mean60", p1logger_select_clause + ' INTO "60_days"."p1logger" FROM "p1logger" GROUP BY time(15m)', influx_database )
+    dbclient.create_continuous_query("p1logger_meaninf", p1logger_select_clause + ' INTO "infinite"."p1logger" FROM "p1logger" GROUP BY time(30m)', influx_database )
 
     print( dbclient.get_list_continuous_queries() )
 

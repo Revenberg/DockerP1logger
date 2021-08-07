@@ -15,7 +15,7 @@ from influxdb import InfluxDBClient
 config = configparser.RawConfigParser(allow_no_value=True)
 config.read("p1logger_config.ini")
 
-log_path = config.get('Logging', 'log_path', fallback='/var/log/solar/')
+log_path = config.get('Logging', 'log_path', fallback='/var/log/p1/')
 do_raw_log = config.getboolean('Logging', 'do_raw_log')
 
 influx_server = config.get('InfluxDB', 'influx_server')
