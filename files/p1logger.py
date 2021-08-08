@@ -130,7 +130,8 @@ class P1Packet(object):
         keys['G'] = self.get_float(b'^(?:0-1:24\.2\.1(?:\(\d+[SW]\))?)?\(([0-9]{5}\.[0-9]{3})(?:\*m3)?\)\r\n', 0)
 
         keys['DN'] = self.get_float(b'^0-0:96\.14\.0\(([0-9])\\)\r\n')
-        print(keys)
+        if do_raw_log:
+            print(keys)
         self._keys = keys
 
     def __getitem__(self, key):
@@ -183,15 +184,18 @@ def getData(device, baudrate):
         values = meter.read_one_packet()
         time.sleep(60)
 
-        print( values )
- 
+        if do_raw_log:
+            print( values )
+            sys.stdout.flush()
+            
         json_body = {'points': [{
                         'fields': {k: v for k, v in values.items()}
                                 }],
                     'measurement': influx_measurement
                     }        
         
-        print( json.dumps(json_body) )
+        if do_raw_log:
+            print( json.dumps(json_body) )
         sys.stdout.flush()
 
         client = InfluxDBClient(host=influx_server,
