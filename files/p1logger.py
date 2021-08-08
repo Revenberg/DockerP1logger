@@ -29,6 +29,15 @@ values = dict()
 
 crc16 = crcmod.predefined.mkPredefinedCrcFun('crc16')
 
+f = open('p1.json', "r")
+data = json.load(f.read())
+  
+for i in data['emp_details']:
+    print(i)
+  
+# Closing file
+f.close()
+
 class SmartMeter(object):
 
     def __init__(self, port, *args, **kwargs):
