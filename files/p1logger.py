@@ -72,6 +72,9 @@ class SmartMeter(object):
             except Exception as e:
                 raise SmartMeterError(e)
 
+            if do_raw_log:
+                print( line )
+
             lines_read += 1
 
             if re.match(b'.*(?=/)', line):
@@ -187,7 +190,7 @@ def getData(device, baudrate):
         if do_raw_log:
             print( values )
             sys.stdout.flush()
-            
+
         json_body = {'points': [{
                         'fields': {k: v for k, v in values.items()}
                                 }],
