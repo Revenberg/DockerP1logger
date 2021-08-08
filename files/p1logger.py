@@ -30,7 +30,7 @@ values = dict()
 crc16 = crcmod.predefined.mkPredefinedCrcFun('crc16')
 
 f = open('p1.json', "r")
-data = json.load(f.read())
+data = json.load(f)
 
 for i in data['p1']:
     print(i)
