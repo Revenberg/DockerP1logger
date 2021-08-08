@@ -196,17 +196,17 @@ def getData(device, baudrate):
 
             print("==========1============")
             print( values.getItems() )
-            
+
             print("============2==========")
-            
+
             sys.stdout.flush()
 
         json_body = {'points': [{
-                        'fields': values.getItems() 
+                            'fields': {k: v for k, v in values._keys.items()}
                                 }],
-                    'measurement': influx_measurement
-                    }        
-        
+                        'measurement': influx_measurement
+                    }
+
         if do_raw_log:
             print( json.dumps(json_body) )
         sys.stdout.flush()
@@ -220,8 +220,8 @@ def getData(device, baudrate):
 
         if not success:
             print('error writing to database')
-        
-    
+
+
 def openDatabase():
     # if the db is not found, then try to create it
     try:
