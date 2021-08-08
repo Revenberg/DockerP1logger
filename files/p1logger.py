@@ -191,16 +191,8 @@ def getData(device, baudrate):
         time.sleep(60)
 
         if do_raw_log:
-            print("=========0=============")
             print( values )
-
-            print("==========1============")
-            print( values.getItems() )
-
-            print("============2==========")
-
-            sys.stdout.flush()
-
+            
         json_body = {'points': [{
                             'fields': {k: v for k, v in values._keys.items()}
                                 }],
@@ -209,7 +201,7 @@ def getData(device, baudrate):
 
         if do_raw_log:
             print( json.dumps(json_body) )
-        sys.stdout.flush()
+            sys.stdout.flush()
 
         client = InfluxDBClient(host=influx_server,
                         port=influx_port)
