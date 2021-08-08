@@ -137,6 +137,9 @@ class P1Packet(object):
             print(keys)
         self._keys = keys
 
+    def items(self):
+        return self._keys
+
     def __getitem__(self, key):
         return self._keys[key]
 
