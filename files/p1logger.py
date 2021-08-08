@@ -31,12 +31,13 @@ crc16 = crcmod.predefined.mkPredefinedCrcFun('crc16')
 
 f = open('p1.json', "r")
 data = json.load(f.read())
-  
-for i in data['emp_details']:
+
+for i in data['p1']:
     print(i)
   
 # Closing file
 f.close()
+sys.stdout.flush()
 
 class SmartMeter(object):
 
