@@ -33,9 +33,10 @@ f = open('p1.json', "r")
 data = json.load(f)
 
 for i in data['p1']:
-    print(i)
+    print("- " + i)
     for j in data['p1'][i]:
-        print(j + " : " +  data['p1'][i][j])
+        print(j)
+        print(data['p1'][i][j])
   
 # Closing file
 f.close()
