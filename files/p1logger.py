@@ -202,7 +202,7 @@ def getData(device, baudrate):
             sys.stdout.flush()
 
         json_body = {'points': [{
-                        'fields': {k: v for k, v in values.getItems() }
+                        'fields': values.getItems() 
                                 }],
                     'measurement': influx_measurement
                     }        
