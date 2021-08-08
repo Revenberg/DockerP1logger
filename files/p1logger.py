@@ -191,20 +191,18 @@ def getData(device, baudrate):
         time.sleep(60)
 
         if do_raw_log:
-            print("======================")
+            print("=========0=============")
             print( values )
 
-            print("======================")
+            print("==========1============")
             print( values.getItems() )
             
-            print("======================")
-            print( values.getItems().items() )
-            print("======================")
+            print("============2==========")
             
             sys.stdout.flush()
 
         json_body = {'points': [{
-                        'fields': {k: v for k, v in values.getItems.items() }
+                        'fields': {k: v for k, v in values.getItems() }
                                 }],
                     'measurement': influx_measurement
                     }        
