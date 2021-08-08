@@ -15,7 +15,6 @@ from influxdb import InfluxDBClient
 config = configparser.RawConfigParser(allow_no_value=True)
 config.read("p1logger_config.ini")
 
-log_path = config.get('Logging', 'log_path', fallback='/var/log/p1/')
 do_raw_log = config.getboolean('Logging', 'do_raw_log')
 
 influx_server = config.get('InfluxDB', 'influx_server')
@@ -131,14 +130,8 @@ class P1Packet(object):
         keys['G'] = self.get_float(b'^(?:0-1:24\.2\.1(?:\(\d+[SW]\))?)?\(([0-9]{5}\.[0-9]{3})(?:\*m3)?\)\r\n', 0)
 
         keys['DN'] = self.get_float(b'^0-0:96\.14\.0\(([0-9])\\)\r\n')
-
-        if do_raw_log:
-            logfile = open(os.path.join(log_path, 'raw.log'), 'a')
-            logfile.write(timestamp + " " + keys + "\n" )
-            logfile.close()
-
+        print(keys)
         self._keys = keys
-
 
     def __getitem__(self, key):
         return self._keys[key]
@@ -190,6 +183,8 @@ def getData(device, baudrate):
         values = meter.read_one_packet()
         time.sleep(60)
 
+        print( values )
+ 
         json_body = {'points': [{
                         'fields': {k: v for k, v in values.items()}
                                 }],
