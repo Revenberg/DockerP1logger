@@ -191,7 +191,14 @@ def getData(device, baudrate):
         time.sleep(60)
 
         if do_raw_log:
+            print("======================")
             print( values )
+
+
+            print("======================")
+            print( values.items() )
+            print("======================")
+            
             sys.stdout.flush()
 
         json_body = {'points': [{
