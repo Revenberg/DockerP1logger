@@ -137,7 +137,7 @@ class P1Packet(object):
             print(keys)
         self._keys = keys
 
-    def items(self):
+    def getItems(self):
         return self._keys
 
     def __getitem__(self, key):
@@ -194,15 +194,17 @@ def getData(device, baudrate):
             print("======================")
             print( values )
 
-
             print("======================")
-            print( values.items() )
+            print( values.getItems() )
+            
+            print("======================")
+            print( values.getItems().items() )
             print("======================")
             
             sys.stdout.flush()
 
         json_body = {'points': [{
-                        'fields': {k: v for k, v in values.items()}
+                        'fields': {k: v for k, v in values.getItems.items() }
                                 }],
                     'measurement': influx_measurement
                     }        
