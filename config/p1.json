@@ -164,7 +164,7 @@
         "value": "Instantaneous active power L1 (+P)",
         "OBIS reference": "1-0:21.7.0.255",
         "type": "float",
-        "key": "INSTANTANEOUS_ACTIVE_POWER_L1_POSITIVE",
+        "key": "+P1",
         "unit": "*kW"
     },
     "1-0:41.7.0": {
@@ -172,7 +172,7 @@
         "value": "Instantaneous active power L2 (+P)",
         "OBIS reference": "1-0:41.7.0.255",
         "type": "float",
-        "key": "INSTANTANEOUS_ACTIVE_POWER_L2_POSITIVE",
+        "key": "+P2",
         "unit": "*kW"
     },
     "1-0:61.7.0": {
@@ -180,7 +180,7 @@
         "value": "Instantaneous active power L3 (+P)",
         "OBIS reference": "1-0:61.7.0.255",
         "type": "float",
-        "key": "INSTANTANEOUS_ACTIVE_POWER_L3_POSITIVE",
+        "key": "+P3",
         "unit": "*kW"
     },
     "1-0:22.7.0": {
