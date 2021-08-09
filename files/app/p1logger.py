@@ -247,7 +247,7 @@ def getData(device, baudrate):
             print( values )
 
         json_body = {'points': [{
-                            'fields': {k: v for k, v in values.self._keys.items()}
+                            'fields': {k: v for k, v in values._keys.items()}
                                 }],
                         'measurement': influx_measurement
                     }
