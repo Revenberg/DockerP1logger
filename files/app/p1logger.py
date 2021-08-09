@@ -71,10 +71,7 @@ class SmartMeter(object):
                 line = self.serial.readline()
             except Exception as e:
                 raise SmartMeterError(e)
-
-            if do_raw_log:
-                print( line )
-
+            
             lines_read += 1
 
             if re.match(b'.*(?=/)', line):
