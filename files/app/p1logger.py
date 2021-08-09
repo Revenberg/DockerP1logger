@@ -215,7 +215,7 @@ class P1Packet(object):
                         print(self._datadetails[key]['unit'])
                         value = value.replace(self._datadetails[key]['unit'], "")
                     
-                    print(value)
+                    print(float(value))
                 else:
                     print(self._datadetails[key]['source'])
                     print(self._datadetails[key]['value'])
