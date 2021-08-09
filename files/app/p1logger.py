@@ -71,7 +71,7 @@ class SmartMeter(object):
                 line = self.serial.readline()
             except Exception as e:
                 raise SmartMeterError(e)
-            
+
             lines_read += 1
 
             if re.match(b'.*(?=/)', line):
@@ -108,39 +108,7 @@ class P1Packet(object):
         self._datagram = datagram
 
         self.validate()
-
         self.split()
-
-        #keys = {}
-
-        self._keys['+T1'] = self.get_float(b'^1-0:1\.8\.1\(([0-9]+\.[0-9]+)\*kWh\)\r\n')
-        self._keys['-T1'] = self.get_float(b'^1-0:2\.8\.1\(([0-9]+\.[0-9]+)\*kWh\)\r\n')
-
-        self._keys['+T2'] = self.get_float(b'^1-0:1\.8\.2\(([0-9]+\.[0-9]+)\*kWh\)\r\n')
-        self._keys['-T2'] = self.get_float(b'^1-0:2\.8\.2\(([0-9]+\.[0-9]+)\*kWh\)\r\n')
-
-        self._keys['+P'] = self.get_float(b'^1-0:1\.7\.0\(([0-9]+\.[0-9]+)\*kW\)\r\n')
-        self._keys['-P'] = self.get_float(b'^1-0:2\.7\.0\(([0-9]+\.[0-9]+)\*kW\)\r\n')
-
-        self._keys['+T'] = self._keys['+T1'] + self._keys['+T2']
-        self._keys['-T'] = self._keys['-T1'] + self._keys['-T2']
-
-        self._keys['+P1'] = self.get_float(b'^1-0:21\.7\.0\(([0-9]+\.[0-9]+)\*kW\)\r\n')
-        self._keys['-P1'] = self.get_float(b'^1-0:22\.7\.0\(([0-9]+\.[0-9]+)\*kW\)\r\n')
-        self._keys['+P2'] = self.get_float(b'^1-0:41\.7\.0\(([0-9]+\.[0-9]+)\*kW\)\r\n')
-        self._keys['-P2'] = self.get_float(b'^1-0:42\.7\.0\(([0-9]+\.[0-9]+)\*kW\)\r\n')
-        self._keys['+P3'] = self.get_float(b'^1-0:61\.7\.0\(([0-9]+\.[0-9]+)\*kW\)\r\n')
-        self._keys['-P3'] = self.get_float(b'^1-0:62\.7\.0\(([0-9]+\.[0-9]+)\*kW\)\r\n')
-
-        self._keys['P'] = self._keys['+P'] - self._keys['-P']
-        self._keys['+P'] = self._keys['+P1'] + self._keys['+P2'] + self._keys['+P3']
-        self._keys['-P'] = self._keys['-P1'] + self._keys['-P2'] + self._keys['-P3']
-
-        self._keys['G'] = self.get_float(b'^(?:0-1:24\.2\.1(?:\(\d+[SW]\))?)?\(([0-9]{5}\.[0-9]{3})(?:\*m3)?\)\r\n', 0)
-
-        self._keys['DN'] = self.get_float(b'^0-0:96\.14\.0\(([0-9])\\)\r\n')
-        if do_raw_log:
-            print(self._keys)
 
     def getItems(self):
         return self.self._keys
@@ -184,29 +152,20 @@ class P1Packet(object):
                 raise P1PacketError('P1Packet with invalid checksum found')
 
     def split(self):
-
         self._keys = {}
         pattern = re.compile(b'(.*?)\\((.*?)\\)\r\n')
-        print("==================== split 1 =========================================")
         for match in pattern.findall(self._datagram):
             key = match[0].decode("utf-8")
-            #if key not in self._datadetails:
-            #print("not found: " + key + " = " + match[1].decode("utf-8"))
-            #else:                            
-            if key in self._datadetails:                            
+            if key in self._datadetails:
                 if 'key' in self._datadetails[key]:
-                    #print("found: " + key + " = " + match[1].decode("utf-8") + " : "+ self._datadetails[key]['value'])
+                    if do_raw_log:
+                        print("found: " + key + " = " + match[1].decode("utf-8") + " : "+ self._datadetails[key]['value'])
 
                     fieldname = self._datadetails[key]['value']
-                    splitted = fieldname.split(".")                    
+                    splitted = fieldname.split(".")
                     if len(splitted) > 1:
                         fieldname = splitted[0]
-                    
-                    #print(self._datadetails[key]['key'])
-                
-                    #print(self._datadetails[key]['source'])
-                    #print(self._datadetails[key]['value'])
-                    
+
                     value = match[1].decode("utf-8")
                     splitted = value.split("(")
                     if len(splitted) > 1:
@@ -214,20 +173,17 @@ class P1Packet(object):
 
                     if 'unit' in self._datadetails[key]:
                         value = value.replace(self._datadetails[key]['unit'], "")
-                    
+
                     if 'type' in self._datadetails[key]:
                         if self._datadetails[key]['type'] == "float":
-                            value = float(value)                    
-                    print(fieldname)
-                    print(value)
+                            value = float(value)
+                    if do_raw_log:
+                        print(fieldname)
+                        print(value)
                     self._keys[fieldname] = value
-                #else:
-                #    print("found: " + key + " = " + match[1].decode("utf-8") + " : "+ self._datadetails[key]['value'])                                
-
-        print("==================== split 2 =========================================")
-        print(self._keys)
-        print("==================== split 3 =========================================")
-        sys.stdout.flush()
+        else:
+            if do_raw_log:
+                print("not found: " + key + " = " + match[1].decode("utf-8"))
 
     def __str__(self):
         return self._datagram.decode('ascii')
