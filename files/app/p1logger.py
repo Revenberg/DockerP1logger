@@ -228,7 +228,7 @@ def openDatabase():
                 db_found = True
         if not(db_found):            
             sys.exit('Database ' + influx_database + ' not found, create it')
-
+        dbclient.close()
     except Exception as e:
         print(e)
         sys.exit('Error querying open influx_server: ' + influx_server)
