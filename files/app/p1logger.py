@@ -181,8 +181,7 @@ class P1Packet(object):
             else:
                 if do_raw_log:
                     print("not found: " + key + " = " + match[1].decode("utf-8"))
-
-            self._keys["CURRENT_ELECTRICITY_USAGE"] = self._keys["+P1"] + self._keys["+P2"] + self._keys["+P3"]
+            
     def __str__(self):
         return self._datagram.decode('ascii')
 
