@@ -208,8 +208,9 @@ class P1Packet(object):
                 
                 if 'unit' in self._datadetails[key]:
                     print(self._datadetails[key]['unit'])
-
-                print(match[1].decode("utf-8"))
+                    print(match[1].decode("utf-8").replace(self._datadetails[key]['unit'], ""))
+                else:
+                    print(match[1].decode("utf-8"))
 
             sys.stdout.flush()
 
