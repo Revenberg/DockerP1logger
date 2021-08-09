@@ -185,7 +185,7 @@ class P1Packet(object):
 
     def split(self):
 
-        _keys = {}
+        self._keys = {}
         pattern = re.compile(b'(.*?)\\((.*?)\\)\r\n')
         print("==================== split 1 =========================================")
         for match in pattern.findall(self._datagram):
@@ -219,14 +219,14 @@ class P1Packet(object):
                             value = float(value)                    
                     print(fieldname)
                     print(value)
-                    _keys[fieldname] = value
+                    self._keys[fieldname] = value
                 else:
                     print("found: " + key + " = " + match[1].decode("utf-8") + " : "+ self._datadetails[key]['value'])
                     
             sys.stdout.flush()
 
         print("==================== split 2 =========================================")
-        print(self._keys)
+        print(self.self._keys)
         print("==================== split 3 =========================================")
 
     def __str__(self):
