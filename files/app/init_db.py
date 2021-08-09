@@ -51,7 +51,7 @@ try:
     print( dbclient.get_list_continuous_queries() )
     
     print("================================")
-    print( dbclient.get_list_measurements( influx_measurement ))
+    print( dbclient.get_list_measurements( params={'db': influx_database} ))
     print("================================")
 
 
