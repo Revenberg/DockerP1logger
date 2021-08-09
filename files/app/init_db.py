@@ -49,26 +49,15 @@ try:
     dbclient.create_retention_policy('60_days', '60d', 1, influx_database, default=False)
     dbclient.create_retention_policy('infinite', 'INF', 1, influx_database, default=False)
 
-    print( dbclient.get_list_continuous_queries() )
-    
-    print("================================")
-#    print( dbclient.get_list_measurements( params={'db': influx_database} ))
-    
     results = dbclient.query('SHOW FIELD KEYS ON "' + influx_database + '" FROM "' + influx_measurement + '"',
                         # params isneeded, otherwise error 'database is required' happens
                         params={'db': influx_database})
 
-    print("================================")
-
     if not results:
         print('error reading from database')
     else:
-        print(results.get_points())
         for values in results.get_points():
             print(values['fieldKey'])
-    
-    print("================================")
-
 
     select_clause = 'SELECT mean("+P") as "+P",mean("+P1") as "+P1",mean("+P2") as "+P2",mean("+P3") as "+P3",mean("+T") as "+T",mean("+T1") as "+T1",mean("+T2") as "+T2",mean("-P") as "-P",mean("-P1") as "-P1",mean("-P2") as "-P2",mean("-P3") as "-P3",mean("-T") as "-T",mean("-T1") as "-T1",mean("-T2") as "-T2",mean("G") as "G",mean("P") as "P"'
     dbclient.create_continuous_query("mean60", select_clause + ' INTO "60_days"."' + influx_measurement + '" FROM "' + influx_measurement + '" GROUP BY time(15m)', influx_database )
