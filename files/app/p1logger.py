@@ -198,9 +198,9 @@ class P1Packet(object):
                     #print("found: " + key + " = " + match[1].decode("utf-8") + " : "+ self._datadetails[key]['value'])
 
                     fieldname = self._datadetails[key]['value']
-                    splitted = fieldname.split("(")                    
+                    splitted = fieldname.split(".")                    
                     if len(splitted) > 1:
-                        fieldname = splitted[1]
+                        fieldname = splitted[0]
                     
                     #print(self._datadetails[key]['key'])
                 
@@ -208,9 +208,9 @@ class P1Packet(object):
                     #print(self._datadetails[key]['value'])
                     
                     value = match[1].decode("utf-8")
-                    splitted = value.split(".")
+                    splitted = value.split("(")
                     if len(splitted) > 1:
-                        value = splitted[0]
+                        value = splitted[1]
 
                     if 'unit' in self._datadetails[key]:
                         value = value.replace(self._datadetails[key]['unit'], "")
@@ -221,8 +221,8 @@ class P1Packet(object):
                     print(fieldname)
                     print(value)
                     self._keys[fieldname] = value
-                else:
-                    print("found: " + key + " = " + match[1].decode("utf-8") + " : "+ self._datadetails[key]['value'])                                
+                #else:
+                #    print("found: " + key + " = " + match[1].decode("utf-8") + " : "+ self._datadetails[key]['value'])                                
 
         print("==================== split 2 =========================================")
         print(self._keys)
