@@ -224,7 +224,7 @@ class P1Packet(object):
                     print("found: " + key + " = " + match[1].decode("utf-8") + " : "+ self._datadetails[key]['value'])                                
 
         print("==================== split 2 =========================================")
-        print(self.self._keys)
+        print(self._keys)
         print("==================== split 3 =========================================")
         sys.stdout.flush()
 
