@@ -195,9 +195,17 @@ class P1Packet(object):
                 raise P1PacketError('P1Packet with invalid checksum found')
 
     def split(self):        
-        pattern = re.compile(b'(.*?)\(:(.*?)\)\r\n')
+        print("==================== split 1 =========================================")
+        
+        regex = b'^(.*?)\\((.*?)\\)\r\n'
+        results = re.search(regex, self._datagram, re.MULTILINE)
+        print(results)
+
+        print("==================== split 2 =========================================")
+        pattern = re.compile(b'(.*?)\\((.*?)\\)\r\n')
         for match in pattern.finditer(self._datagram):        
             print(match)
+        print("==================== split 3 =========================================")
 
     def __str__(self):
         return self._datagram.decode('ascii')
