@@ -207,7 +207,7 @@ class P1Packet(object):
                         print(self._datadetails[key]['type'])                
                     
                     value = match[1].decode("utf-8")
-                    splitted = value.split("(:")
+                    splitted = value.split("(")                    
                     if len(splitted) > 1:
                         value = splitted[1]
 
