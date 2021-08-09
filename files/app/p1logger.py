@@ -193,21 +193,11 @@ class P1Packet(object):
         pattern1 = re.compile(b'(.*?)\\((.*?)\\)\r\n')
         pattern2 = re.compile(b'(.*?)\\((.*?)\\)')
         for match1 in pattern1.findall(self._datagram):        
-            key = match1[0].decode("utf-8")
-            print(key + " = " + match1[1].decode("utf-8"))
-
-            if key not in self._datadetails:
-                print("not found")
-                for match2 in pattern2.findall(self._datagram):        
-                    print(match2)
-
+            key1 = match1[0].decode("utf-8")            
+            if key1 not in self._datadetails:
+                print("not found: " + key1 + " = " + match1[1].decode("utf-8"))
             else:
-                print("found")
-                #self._datadetails:
-                #print("- " + i)
-                #for j in data['p1'][i]:
-                #    print(j)
-                #    print(data['p1'][i][j])
+                print("found: " + key1 + " = " + match1[1].decode("utf-8"))                
             sys.stdout.flush()
 
 
