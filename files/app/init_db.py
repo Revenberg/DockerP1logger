@@ -54,17 +54,18 @@ try:
     print("================================")
 #    print( dbclient.get_list_measurements( params={'db': influx_database} ))
     
-    success = dbclient.query('SHOW FIELD KEYS ON "' + influx_database + '" FROM "' + influx_measurement + '"',
+    results = dbclient.query('SHOW FIELD KEYS ON "' + influx_database + '" FROM "' + influx_measurement + '"',
                         # params isneeded, otherwise error 'database is required' happens
                         params={'db': influx_database})
 
-    print(success)
-    print( json.dumps(success) )
     print("================================")
 
-    if not success:
+    if not results:
         print('error reading from database')
-
+    else:
+        for measurement in results.get_points(measurement='"' + influx_measurement + '"'):
+            usage_system = measurement['usage_system']
+    
     print("================================")
 
 
