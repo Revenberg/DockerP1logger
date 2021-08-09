@@ -195,7 +195,7 @@ class P1Packet(object):
             key = match[0].decode("utf-8")
             print(key + " = " + match[1].decode("utf-8"))
 
-            if 'key' not in self._datadetails['p1']:
+            if key not in self._datadetails['p1']:
                 print("not found")
             else:
                 print("found")
