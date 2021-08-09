@@ -202,9 +202,6 @@ class P1Packet(object):
                 
                     print(self._datadetails[key]['source'])
                     print(self._datadetails[key]['value'])
-
-                    if 'type' in self._datadetails[key]:
-                        print(self._datadetails[key]['type'])                
                     
                     value = match[1].decode("utf-8")
                     splitted = value.split("(")                    
@@ -215,7 +212,11 @@ class P1Packet(object):
                         print(self._datadetails[key]['unit'])
                         value = value.replace(self._datadetails[key]['unit'], "")
                     
-                    print(float(value))
+                        if 'type' in self._datadetails[key]:
+                            if self._datadetails[key]['type'] == "float":
+                                value = float(value)
+                    
+                    print(value)
                 else:
                     print(self._datadetails[key]['source'])
                     print(self._datadetails[key]['value'])
