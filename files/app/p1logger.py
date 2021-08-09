@@ -196,10 +196,7 @@ class P1Packet(object):
 
     def split(self):        
         print("==================== split 1 =========================================")
-        pattern = re.compile(b'(.*?)\\((.*?)\\)\r\n')
-        for match in pattern.findall(self._datagram):        
-            print(tuple(match.groups()))    
-
+        
         print("==================== split 2 =========================================")
         pattern = re.compile(b'(.*?)\\((.*?)\\)\r\n')
         for match in pattern.findall(self._datagram):        
