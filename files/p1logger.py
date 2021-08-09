@@ -118,6 +118,8 @@ class P1Packet(object):
 
         self.validate()
 
+        self.split()
+
         keys = {}
 
         keys['+T1'] = self.get_float(b'^1-0:1\.8\.1\(([0-9]+\.[0-9]+)\*kWh\)\r\n')
@@ -191,6 +193,9 @@ class P1Packet(object):
             if given_checksum != calculated_checksum:
                 raise P1PacketError('P1Packet with invalid checksum found')
 
+    def split(self):        
+        for line in self._datagram.splitlines():
+            print(line)       
 
     def __str__(self):
         return self._datagram.decode('ascii')
