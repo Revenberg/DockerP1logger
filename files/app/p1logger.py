@@ -190,11 +190,12 @@ class P1Packet(object):
         print("==================== split 1 =========================================")
         for match in pattern.findall(self._datagram):
             key = match[0].decode("utf-8")
-            if key not in self._datadetails:
-                print("not found: " + key + " = " + match[1].decode("utf-8"))
-            else:                
+            #if key not in self._datadetails:
+            #print("not found: " + key + " = " + match[1].decode("utf-8"))
+            #else:                            
+            if key in self._datadetails:                            
                 if 'key' in self._datadetails[key]:
-                    print("found: " + key + " = " + match[1].decode("utf-8") + " : "+ self._datadetails[key]['value'])
+                    #print("found: " + key + " = " + match[1].decode("utf-8") + " : "+ self._datadetails[key]['value'])
 
                     fieldname = self._datadetails[key]['value']
                     splitted = fieldname.split("(")                    
@@ -207,9 +208,9 @@ class P1Packet(object):
                     #print(self._datadetails[key]['value'])
                     
                     value = match[1].decode("utf-8")
-                    splitted = value.split("(")                    
+                    splitted = value.split(".")
                     if len(splitted) > 1:
-                        value = splitted[1]
+                        value = splitted[0]
 
                     if 'unit' in self._datadetails[key]:
                         value = value.replace(self._datadetails[key]['unit'], "")
