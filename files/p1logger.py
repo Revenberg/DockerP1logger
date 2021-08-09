@@ -199,6 +199,7 @@ class P1Packet(object):
             print(line)
             print(re.match("(.*?)\(:(.*?)\)", line)) #.group()            
 
+
     def __str__(self):
         return self._datagram.decode('ascii')
 
