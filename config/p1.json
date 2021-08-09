@@ -2,7 +2,7 @@
     "0-0:1.0.0": {
         "source": "Electricity",
         "value": "Date-time stamp of the P1 message",
-        "unit": "s",        
+        "unit": "s",
         "OBIS reference": "0-0:1.0.0.255"
     },
     "1-3:0.2.8": {
@@ -20,7 +20,7 @@
         "value": "Meter Reading electricity delivered to client (low tariff) in 0,001 kWh",
         "OBIS reference": "1-0:1.8.1.255",
         "type": "float",
-        "key": "+T1",
+        "key": "ELECTRICITY_DELIVERED_TO_CLIENT_LOW_TARIFF",
         "unit": "*kWh"
     },
     "1-0:1.8.2": {
@@ -28,7 +28,7 @@
         "value": "Meter Reading electricity delivered to client (normal tariff) in 0,001 kWh",
         "OBIS reference": "1-0:1.8.2.255",
         "type": "float",
-        "key": "+T2",
+        "key": "ELECTRICITY_DELIVERED_TO_CLIENT_NORMAL_TARIFF",
         "unit": "*kWh"
     },
     "1-0:2.8.1": {
@@ -36,7 +36,7 @@
         "value": "Meter Reading electricity delivered by client (low tariff) in 0,001 kWh",
         "OBIS reference": "1-0:2.8.1.255",
         "type": "float",
-        "key": "-T1",
+        "key": "ELECTRICITY_DELIVERED_BY_CLIENT_LOW_TARIFF",
         "unit": "*kWh"
     },
     "1-0:2.8.2": {
@@ -44,7 +44,7 @@
         "value": "Meter Reading electricity delivered by client (normal tariff) in 0,001 kWh",
         "OBIS reference": "1-0:2.8.2.255",
         "type": "float",
-        "key": "+T2",
+        "key": "ELECTRICITY_DELIVERED_BY_CLIENT_NORMAL_TARIFF",
         "unit": "*kWh"
     },
     "0-0:96.14.0": {
@@ -59,7 +59,7 @@
         "value": "Actual electricity power delivered (+P) in 1 Watt resolution",
         "OBIS reference": "1-0:1.7.0.255",
         "type": "float",
-        "key": "+P",
+        "key": "ACTUAL_ELECTRICITY_POWER_DELIVERED",
         "unit": "*kW"
     },
     "1-0:2.7.0": {
@@ -67,20 +67,22 @@
         "value": "Actual electricity power received (-P) in 1 Watt resolution",
         "OBIS reference": "1-0:2.7.0.255",
         "type": "float",
-        "key": "-P",
+        "key": "ACTUAL_ELECTRICITY_POWER_RECEIVED",
         "unit": "*kW"
     },
     "0-0:96.7.21": {
         "source": "Electricity",
         "value": "Number of power failures in any phases",
-        "OBIS reference": "0-0:96.7.21.255"
+        "OBIS reference": "0-0:96.7.21.255",
+        "type": "float",
+        "key": "POWER_FAILURE_COUNT"
     },
     "0-0:96.7.9": {
         "source": "Electricity",
         "value": "Number of long power failures in any phases",
         "OBIS reference": "0-0:96.7.9.255",
         "type": "float",
-        "key": "LONG_POWER_FAILURE_COUNT"        
+        "key": "LONG_POWER_FAILURE_COUNT"
     },
     "1-0:99.97.0": {
         "source": "Electricity",
@@ -106,7 +108,7 @@
         "value": "Number of voltage sags in phase L3",
         "OBIS reference": "1-0:72.32.0.255",
         "type": "float",
-        "key": "VOLTAGE_SAG_L3_COUNT"        
+        "key": "VOLTAGE_SAG_L3_COUNT"
     },
     "1-0:32.36.0": {
         "source": "Electricity",
@@ -131,7 +133,7 @@
     },
     "1-0:32.7.0": {
         "source": "Electricity",
-        "value": "Instantaneous voltage L1",        
+        "value": "Instantaneous voltage L1",
         "OBIS reference": "1-0:32.7.0.255"
     },
     "1-0:52.7.0": {
@@ -164,7 +166,7 @@
         "value": "Instantaneous active power L1 (+P)",
         "OBIS reference": "1-0:21.7.0.255",
         "type": "float",
-        "key": "+P1",
+        "key": "INSTANTANEOUS_ACTIVE_POWER_L1_CONSUMED",
         "unit": "*kW"
     },
     "1-0:41.7.0": {
@@ -172,7 +174,7 @@
         "value": "Instantaneous active power L2 (+P)",
         "OBIS reference": "1-0:41.7.0.255",
         "type": "float",
-        "key": "+P2",
+        "key": "INSTANTANEOUS_ACTIVE_POWER_L2_CONSUMED",
         "unit": "*kW"
     },
     "1-0:61.7.0": {
@@ -180,7 +182,7 @@
         "value": "Instantaneous active power L3 (+P)",
         "OBIS reference": "1-0:61.7.0.255",
         "type": "float",
-        "key": "+P3",
+        "key": "INSTANTANEOUS_ACTIVE_POWER_L3_CONSUMED",
         "unit": "*kW"
     },
     "1-0:22.7.0": {
@@ -188,7 +190,7 @@
         "value": "Instantaneous active power L1 (-P)",
         "OBIS reference": "1-0:22.7.0.255",
         "type": "float",
-        "key": "-P1",
+        "key": "INSTANTANEOUS_ACTIVE_POWER_L1_DELIVERED",
         "unit": "*kW"
     },
     "1-0:42.7.0": {
@@ -196,7 +198,7 @@
         "value": "Instantaneous active power L2 (-P)",
         "OBIS reference": "1-0:42.7.0.255",
         "type": "float",
-        "key": "-P2",
+        "key": "INSTANTANEOUS_ACTIVE_POWER_L2_DELIVERED",
         "unit": "*kW"
     },
     "1-0:62.7.0": {
@@ -204,7 +206,7 @@
         "value": "Instantaneous active power L3 (-P)",
         "OBIS reference": "1-0:62.7.0.255",
         "type": "float",
-        "key": "-P3",
+        "key": "INSTANTANEOUS_ACTIVE_POWER_L3_DELIVERED",
         "unit": "*kW"
     },
     "0-0:96.13.1": {
@@ -222,7 +224,7 @@
         "value": "Device-Type",
         "OBIS reference": "0-n:24.1.0.255",
         "type": "float",
-        "key": "G",
+        "key": "GAS",
         "unit": "*m3"
     },
     "0-1:96.1.0": {
@@ -235,7 +237,7 @@
         "value": "Last 5-minute value (temperature converted), gas delivered to client in m3, including decimal values and capture time",
         "OBIS reference": "0-n:24.2.1.255",
         "type": "float",
-        "key": "Gas reading",
+        "key": "GAS_READING",
         "unit": "*m3"
     }
 }
