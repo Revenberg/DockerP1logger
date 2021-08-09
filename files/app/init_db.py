@@ -53,7 +53,7 @@ try:
     print("================================")
 #    print( dbclient.get_list_measurements( params={'db': influx_database} ))
     
-    success = dbclient.query('show measurements on "' + influx_measurement + '"',
+    success = dbclient.query('SHOW FIELD KEYS FROM"' + influx_measurement + '"',
                         # params isneeded, otherwise error 'database is required' happens
                         params={'db': influx_database})
 
