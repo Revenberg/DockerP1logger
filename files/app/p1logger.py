@@ -187,21 +187,24 @@ class P1Packet(object):
                 raise P1PacketError('P1Packet with invalid checksum found')
 
     def split(self):
-        print("==================== split 1 =========================================")
-        print(self._datadetails)
-        print("==================== split 2 =========================================")
         pattern = re.compile(b'(.*?)\\((.*?)\\)\r\n')
         for match in pattern.findall(self._datagram):
             key = match[0].decode("utf-8")
             if key not in self._datadetails:
                 print("not found: " + key + " = " + match[1].decode("utf-8"))
-            else:
-                print("found: " + key + " = " + match[1].decode("utf-8"))
+            else:                
                 if 'key' in self._datadetails[key]:
-                    print(self._datadetails[key]['key'])
+                    print("found: " + key + " = " + match[1].decode("utf-8") + " : "+ self._datadetails[key]['value'])
+
+                    fieldname = self._datadetails[key]['value']
+                    splitted = fieldname.split("(")                    
+                    if len(splitted) > 1:
+                        fieldname = splitted[1]
+                    
+                    #print(self._datadetails[key]['key'])
                 
-                    print(self._datadetails[key]['source'])
-                    print(self._datadetails[key]['value'])
+                    #print(self._datadetails[key]['source'])
+                    #print(self._datadetails[key]['value'])
                     
                     value = match[1].decode("utf-8")
                     splitted = value.split("(")                    
@@ -209,17 +212,15 @@ class P1Packet(object):
                         value = splitted[1]
 
                     if 'unit' in self._datadetails[key]:
-                        print(self._datadetails[key]['unit'])
                         value = value.replace(self._datadetails[key]['unit'], "")
                     
                     if 'type' in self._datadetails[key]:
                         if self._datadetails[key]['type'] == "float":
-                            value = float(value)
-                    
+                            value = float(value)                    
+                    print(fieldname)
                     print(value)
                 else:
-                    print(self._datadetails[key]['source'])
-                    print(self._datadetails[key]['value'])
+                    print("found: " + key + " = " + match[1].decode("utf-8") + " : "+ self._datadetails[key]['value'])
                     
             sys.stdout.flush()
 
