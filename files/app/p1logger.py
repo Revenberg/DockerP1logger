@@ -190,6 +190,7 @@ class P1Packet(object):
 
         _keys = {}
         pattern = re.compile(b'(.*?)\\((.*?)\\)\r\n')
+        print("==================== split 1 =========================================")
         for match in pattern.findall(self._datagram):
             key = match[0].decode("utf-8")
             if key not in self._datadetails:
@@ -227,7 +228,8 @@ class P1Packet(object):
                     
             sys.stdout.flush()
 
-
+        print("==================== split 2 =========================================")
+        print(self._keys)
         print("==================== split 3 =========================================")
 
     def __str__(self):
