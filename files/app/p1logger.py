@@ -29,10 +29,6 @@ values = dict()
 
 crc16 = crcmod.predefined.mkPredefinedCrcFun('crc16')
 
-f = open('p1.json', "r")
-datadetails = json.load(f)
-f.close()
-
 class SmartMeter(object):
 
     def __init__(self, port, *args, **kwargs):
@@ -103,8 +99,14 @@ class P1PacketError(Exception):
 
 class P1Packet(object):
     _datagram = ''
+    _datadetails = None
 
     def __init__(self, datagram):
+
+        f = open('p1.json', "r")
+        self._datadetails = json.load(f)
+        f.close()
+
         self._datagram = datagram
 
         self.validate()
@@ -186,18 +188,18 @@ class P1Packet(object):
 
     def split(self):        
         print("==================== split 1 =========================================")
-        
-        print("==================== split 2 =========================================")
+        print(self._datadetails['p1'])
+        print("==================== split 2 =========================================")        
         pattern = re.compile(b'(.*?)\\((.*?)\\)\r\n')
         for match in pattern.findall(self._datagram):        
             key = match[0].decode("utf-8")
             print(key + " = " + match[1].decode("utf-8"))
 
-            if 'key' not in datadetails['p1']:
+            if 'key' not in self._datadetails['p1']:
                 print("not found")
             else:
                 print("found")
-                #datadetails['p1']:
+                #self._datadetails['p1']:
                 #print("- " + i)
                 #for j in data['p1'][i]:
                 #    print(j)
