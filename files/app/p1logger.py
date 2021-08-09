@@ -211,7 +211,10 @@ class P1Packet(object):
                         print(match[1].decode("utf-8").replace(self._datadetails[key]['unit'], ""))
                     else:
                         print(match[1].decode("utf-8"))
-
+                else:
+                    print(self._datadetails[key]['source'])
+                    print(self._datadetails[key]['value'])
+                    
             sys.stdout.flush()
 
 
