@@ -221,13 +221,12 @@ class P1Packet(object):
                     print(value)
                     self._keys[fieldname] = value
                 else:
-                    print("found: " + key + " = " + match[1].decode("utf-8") + " : "+ self._datadetails[key]['value'])
-                    
-            sys.stdout.flush()
+                    print("found: " + key + " = " + match[1].decode("utf-8") + " : "+ self._datadetails[key]['value'])                                
 
         print("==================== split 2 =========================================")
         print(self.self._keys)
         print("==================== split 3 =========================================")
+        sys.stdout.flush()
 
     def __str__(self):
         return self._datagram.decode('ascii')
