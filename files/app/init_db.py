@@ -57,10 +57,11 @@ try:
                         # params isneeded, otherwise error 'database is required' happens
                         params={'db': influx_database})
 
+    print(success)
     print(success.raw)
 
     if not success:
-        print('error writing to database')
+        print('error reading from database')
 
     print("================================")
 
