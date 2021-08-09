@@ -193,8 +193,7 @@ def getData(device, baudrate):
     meter = SmartMeter(device, baudrate)
 
     while True:
-        values = meter.read_one_packet()
-        time.sleep(60)
+        values = meter.read_one_packet()        
 
         if do_raw_log:
             print( values )
@@ -219,6 +218,7 @@ def getData(device, baudrate):
         if not success:
             print('error writing to database')
 
+        time.sleep(60)
 
 def openDatabase():
     # if the db is not found, then try to create it
