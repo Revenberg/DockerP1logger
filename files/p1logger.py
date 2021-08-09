@@ -42,6 +42,7 @@ for i in data['p1']:
 f.close()
 sys.stdout.flush()
 
+print("==================================")
 class SmartMeter(object):
 
     def __init__(self, port, *args, **kwargs):
@@ -195,7 +196,8 @@ class P1Packet(object):
 
     def split(self):        
         for line in self._datagram.splitlines():
-            print(line)       
+            print(line)
+            print(re.match("(.*?)\(:(.*?)\)", line)) #.group()            
 
     def __str__(self):
         return self._datagram.decode('ascii')
