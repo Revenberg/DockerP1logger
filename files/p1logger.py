@@ -195,10 +195,9 @@ class P1Packet(object):
                 raise P1PacketError('P1Packet with invalid checksum found')
 
     def split(self):        
-        for line in self._datagram.splitlines():
-            print(line)
-            print(re.match("(.*?)\(:(.*?)\)", line)) #.group()            
-
+        pattern = re.compile(b'(.*?)\(:(.*?)\)\r\n')
+        for match in pattern.finditer(self._datagram):        
+            print(match)
 
     def __str__(self):
         return self._datagram.decode('ascii')
