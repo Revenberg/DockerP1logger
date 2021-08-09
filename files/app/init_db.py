@@ -64,7 +64,8 @@ try:
     dbclient.create_continuous_query("meaninf", select_clause + ' INTO "infinite"."' + influx_measurement + '" FROM "' + influx_measurement + '" GROUP BY time(30m)', influx_database )
 
     print( dbclient.get_list_continuous_queries() )
-
+    dbclient.close()
+    
 except Exception as e:
     print(e)
     sys.exit('Error querying open database: ' + influx_database)
