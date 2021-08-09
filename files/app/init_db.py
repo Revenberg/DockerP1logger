@@ -6,6 +6,7 @@ import binascii
 import time
 import sys
 import configparser
+import json
 from influxdb import InfluxDBClient
 
 config = configparser.RawConfigParser(allow_no_value=True)
@@ -58,7 +59,8 @@ try:
                         params={'db': influx_database})
 
     print(success)
-    print(success.raw)
+    print( json.dumps(success) )
+    print("================================")
 
     if not success:
         print('error reading from database')
