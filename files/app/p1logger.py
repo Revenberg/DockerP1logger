@@ -161,10 +161,11 @@ class P1Packet(object):
                     if do_raw_log:
                         print("found: " + key + " = " + match[1].decode("utf-8") + " : "+ self._datadetails[key]['value'])
 
-                    fieldname = self._datadetails[key]['value']
-                    splitted = fieldname.split(".")
-                    if len(splitted) > 1:
-                        fieldname = splitted[0]
+                    fieldname = self._datadetails[key]['key']
+                    #fieldname = self._datadetails[key]['value']
+                    #splitted = fieldname.split(".")
+                    #if len(splitted) > 1:
+                    #    fieldname = splitted[0]
 
                     value = match[1].decode("utf-8")
                     splitted = value.split("(")
