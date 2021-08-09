@@ -63,7 +63,10 @@ try:
     if not results:
         print('error reading from database')
     else:
-        for values in results.get_points(measurement='"' + influx_measurement + '"'):
+        print(results)
+        print("================================")
+        print(results.get_points())
+        for values in results.get_points():
             print(values)
     
     print("================================")
