@@ -190,13 +190,17 @@ class P1Packet(object):
         print("==================== split 1 =========================================")
         print(self._datadetails['p1'])
         print("==================== split 2 =========================================")        
-        pattern = re.compile(b'(.*?)\\((.*?)\\)\r\n')
-        for match in pattern.findall(self._datagram):        
-            key = match[0].decode("utf-8")
-            print(key + " = " + match[1].decode("utf-8"))
+        pattern1 = re.compile(b'(.*?)\\((.*?)\\)\r\n')
+        pattern2 = re.compile(b'(.*?)\\((.*?)\\)')
+        for match1 in pattern1.findall(self._datagram):        
+            key = match1[0].decode("utf-8")
+            print(key + " = " + match1[1].decode("utf-8"))
 
             if key not in self._datadetails['p1']:
                 print("not found")
+                for match2 in pattern2.findall(self._datagram):        
+                    print(match2)
+                    
             else:
                 print("found")
                 #self._datadetails['p1']:
