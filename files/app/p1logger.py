@@ -197,20 +197,20 @@ class P1Packet(object):
                 print("not found: " + key + " = " + match[1].decode("utf-8"))
             else:
                 print("found: " + key + " = " + match[1].decode("utf-8"))
-                print(self._datadetails[key]['source'])
-                print(self._datadetails[key]['value'])
-
-                if 'type' in self._datadetails[key]:
-                    print(self._datadetails[key]['type'])
-                
                 if 'key' in self._datadetails[key]:
                     print(self._datadetails[key]['key'])
                 
-                if 'unit' in self._datadetails[key]:
-                    print(self._datadetails[key]['unit'])
-                    print(match[1].decode("utf-8").replace(self._datadetails[key]['unit'], ""))
-                else:
-                    print(match[1].decode("utf-8"))
+                    print(self._datadetails[key]['source'])
+                    print(self._datadetails[key]['value'])
+
+                    if 'type' in self._datadetails[key]:
+                        print(self._datadetails[key]['type'])                
+                    
+                    if 'unit' in self._datadetails[key]:
+                        print(self._datadetails[key]['unit'])
+                        print(match[1].decode("utf-8").replace(self._datadetails[key]['unit'], ""))
+                    else:
+                        print(match[1].decode("utf-8"))
 
             sys.stdout.flush()
 
