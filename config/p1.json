@@ -2,7 +2,7 @@
     "0-0:1.0.0": {
         "source": "Electricity",
         "value": "Date-time stamp of the P1 message",
-        "unit": "s",
+        "unit": "s",        
         "OBIS reference": "0-0:1.0.0.255"
     },
     "1-3:0.2.8": {
