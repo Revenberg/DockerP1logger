@@ -100,6 +100,7 @@ class P1PacketError(Exception):
 class P1Packet(object):
     _datagram = ''
     _datadetails = None
+    _keys = {}
 
     def __init__(self, datagram):
 
@@ -113,43 +114,42 @@ class P1Packet(object):
 
         self.split()
 
-        keys = {}
+        #keys = {}
 
-        keys['+T1'] = self.get_float(b'^1-0:1\.8\.1\(([0-9]+\.[0-9]+)\*kWh\)\r\n')
-        keys['-T1'] = self.get_float(b'^1-0:2\.8\.1\(([0-9]+\.[0-9]+)\*kWh\)\r\n')
+        self._keys['+T1'] = self.get_float(b'^1-0:1\.8\.1\(([0-9]+\.[0-9]+)\*kWh\)\r\n')
+        self._keys['-T1'] = self.get_float(b'^1-0:2\.8\.1\(([0-9]+\.[0-9]+)\*kWh\)\r\n')
 
-        keys['+T2'] = self.get_float(b'^1-0:1\.8\.2\(([0-9]+\.[0-9]+)\*kWh\)\r\n')
-        keys['-T2'] = self.get_float(b'^1-0:2\.8\.2\(([0-9]+\.[0-9]+)\*kWh\)\r\n')
+        self._keys['+T2'] = self.get_float(b'^1-0:1\.8\.2\(([0-9]+\.[0-9]+)\*kWh\)\r\n')
+        self._keys['-T2'] = self.get_float(b'^1-0:2\.8\.2\(([0-9]+\.[0-9]+)\*kWh\)\r\n')
 
-        keys['+P'] = self.get_float(b'^1-0:1\.7\.0\(([0-9]+\.[0-9]+)\*kW\)\r\n')
-        keys['-P'] = self.get_float(b'^1-0:2\.7\.0\(([0-9]+\.[0-9]+)\*kW\)\r\n')
+        self._keys['+P'] = self.get_float(b'^1-0:1\.7\.0\(([0-9]+\.[0-9]+)\*kW\)\r\n')
+        self._keys['-P'] = self.get_float(b'^1-0:2\.7\.0\(([0-9]+\.[0-9]+)\*kW\)\r\n')
 
-        keys['+T'] = keys['+T1'] + keys['+T2']
-        keys['-T'] = keys['-T1'] + keys['-T2']
+        self._keys['+T'] = self._keys['+T1'] + self._keys['+T2']
+        self._keys['-T'] = self._keys['-T1'] + self._keys['-T2']
 
-        keys['+P1'] = self.get_float(b'^1-0:21\.7\.0\(([0-9]+\.[0-9]+)\*kW\)\r\n')
-        keys['-P1'] = self.get_float(b'^1-0:22\.7\.0\(([0-9]+\.[0-9]+)\*kW\)\r\n')
-        keys['+P2'] = self.get_float(b'^1-0:41\.7\.0\(([0-9]+\.[0-9]+)\*kW\)\r\n')
-        keys['-P2'] = self.get_float(b'^1-0:42\.7\.0\(([0-9]+\.[0-9]+)\*kW\)\r\n')
-        keys['+P3'] = self.get_float(b'^1-0:61\.7\.0\(([0-9]+\.[0-9]+)\*kW\)\r\n')
-        keys['-P3'] = self.get_float(b'^1-0:62\.7\.0\(([0-9]+\.[0-9]+)\*kW\)\r\n')
+        self._keys['+P1'] = self.get_float(b'^1-0:21\.7\.0\(([0-9]+\.[0-9]+)\*kW\)\r\n')
+        self._keys['-P1'] = self.get_float(b'^1-0:22\.7\.0\(([0-9]+\.[0-9]+)\*kW\)\r\n')
+        self._keys['+P2'] = self.get_float(b'^1-0:41\.7\.0\(([0-9]+\.[0-9]+)\*kW\)\r\n')
+        self._keys['-P2'] = self.get_float(b'^1-0:42\.7\.0\(([0-9]+\.[0-9]+)\*kW\)\r\n')
+        self._keys['+P3'] = self.get_float(b'^1-0:61\.7\.0\(([0-9]+\.[0-9]+)\*kW\)\r\n')
+        self._keys['-P3'] = self.get_float(b'^1-0:62\.7\.0\(([0-9]+\.[0-9]+)\*kW\)\r\n')
 
-        keys['P'] = keys['+P'] - keys['-P']
-        keys['+P'] = keys['+P1'] + keys['+P2'] + keys['+P3']
-        keys['-P'] = keys['-P1'] + keys['-P2'] + keys['-P3']
+        self._keys['P'] = self._keys['+P'] - self._keys['-P']
+        self._keys['+P'] = self._keys['+P1'] + self._keys['+P2'] + self._keys['+P3']
+        self._keys['-P'] = self._keys['-P1'] + self._keys['-P2'] + self._keys['-P3']
 
-        keys['G'] = self.get_float(b'^(?:0-1:24\.2\.1(?:\(\d+[SW]\))?)?\(([0-9]{5}\.[0-9]{3})(?:\*m3)?\)\r\n', 0)
+        self._keys['G'] = self.get_float(b'^(?:0-1:24\.2\.1(?:\(\d+[SW]\))?)?\(([0-9]{5}\.[0-9]{3})(?:\*m3)?\)\r\n', 0)
 
-        keys['DN'] = self.get_float(b'^0-0:96\.14\.0\(([0-9])\\)\r\n')
+        self._keys['DN'] = self.get_float(b'^0-0:96\.14\.0\(([0-9])\\)\r\n')
         if do_raw_log:
-            print(keys)
-        self._keys = keys
+            print(self._keys)
 
     def getItems(self):
-        return self._keys
+        return self.self._keys
 
     def __getitem__(self, key):
-        return self._keys[key]
+        return self.self._keys[key]
 
 
     def get_float(self, regex, default=None):
@@ -187,6 +187,8 @@ class P1Packet(object):
                 raise P1PacketError('P1Packet with invalid checksum found')
 
     def split(self):
+
+        _keys = {}
         pattern = re.compile(b'(.*?)\\((.*?)\\)\r\n')
         for match in pattern.findall(self._datagram):
             key = match[0].decode("utf-8")
@@ -219,6 +221,7 @@ class P1Packet(object):
                             value = float(value)                    
                     print(fieldname)
                     print(value)
+                    _keys[fieldname] = value
                 else:
                     print("found: " + key + " = " + match[1].decode("utf-8") + " : "+ self._datadetails[key]['value'])
                     
@@ -242,7 +245,7 @@ def getData(device, baudrate):
             print( values )
 
         json_body = {'points': [{
-                            'fields': {k: v for k, v in values._keys.items()}
+                            'fields': {k: v for k, v in values.self._keys.items()}
                                 }],
                         'measurement': influx_measurement
                     }
