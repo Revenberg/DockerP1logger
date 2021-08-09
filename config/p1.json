@@ -1,23 +1,23 @@
 {
     "0-0:1.0.0": {
         "source": "Electricity",
-        "Value": "Date-time stamp of the P1 message",
+        "value": "Date-time stamp of the P1 message",
         "unit": "s",
         "OBIS reference": "0-0:1.0.0.255"
     },
     "1-3:0.2.8": {
         "source": "Electricity",
-        "Value": "Version information for P1 output",
+        "value": "Version information for P1 output",
         "OBIS reference": "1-3:0.2.8.255"
     },
     "0-0:96.1.1": {
         "source": "Electricity",
-        "Value": "Equipment identifier",
+        "value": "Equipment identifier",
         "OBIS reference": "0-0:96.1.1.255"
     },
     "1-0:1.8.1": {
         "source": "Electricity",
-        "Value": "Meter Reading electricity delivered to client (low tariff) in 0,001 kWh",
+        "value": "Meter Reading electricity delivered to client (low tariff) in 0,001 kWh",
         "OBIS reference": "1-0:1.8.1.255",
         "type": "float",
         "key": "+T1",
@@ -25,7 +25,7 @@
     },
     "1-0:1.8.2": {
         "source": "Electricity",
-        "Value": "Meter Reading electricity delivered to client (normal tariff) in 0,001 kWh",
+        "value": "Meter Reading electricity delivered to client (normal tariff) in 0,001 kWh",
         "OBIS reference": "1-0:1.8.2.255",
         "type": "float",
         "key": "+T2",
@@ -33,7 +33,7 @@
     },
     "1-0:2.8.1": {
         "source": "Electricity",
-        "Value": "Meter Reading electricity delivered by client (low tariff) in 0,001 kWh",
+        "value": "Meter Reading electricity delivered by client (low tariff) in 0,001 kWh",
         "OBIS reference": "1-0:2.8.1.255",
         "type": "float",
         "key": "-T1",
@@ -41,7 +41,7 @@
     },
     "1-0:2.8.2": {
         "source": "Electricity",
-        "Value": "Meter Reading electricity delivered by client (normal tariff) in 0,001 kWh",
+        "value": "Meter Reading electricity delivered by client (normal tariff) in 0,001 kWh",
         "OBIS reference": "1-0:2.8.2.255",
         "type": "float",
         "key": "+T2",
@@ -49,14 +49,14 @@
     },
     "0-0:96.14.0": {
         "source": "Electricity",
-        "Value": "Tariff indicator electricity. The tariff indicator can be used to switch tariff dependent loads e.g boilers. This is responsibility of the P1 user",
+        "value": "Tariff indicator electricity. The tariff indicator can be used to switch tariff dependent loads e.g boilers. This is responsibility of the P1 user",
         "OBIS reference": "0-0:96.14.0.255",
         "type": "float",
         "key": "+DN"
     },
     "1-0:1.7.0": {
         "source": "Electricity",
-        "Value": "Actual electricity power delivered (+P) in 1 Watt resolution",
+        "value": "Actual electricity power delivered (+P) in 1 Watt resolution",
         "OBIS reference": "1-0:1.7.0.255",
         "type": "float",
         "key": "+P",
@@ -64,7 +64,7 @@
     },
     "1-0:2.7.0": {
         "source": "Electricity",
-        "Value": "Actual electricity power received (-P) in 1 Watt resolution",
+        "value": "Actual electricity power received (-P) in 1 Watt resolution",
         "OBIS reference": "1-0:2.7.0.255",
         "type": "float",
         "key": "-P",
@@ -72,82 +72,82 @@
     },
     "0-0:96.7.21": {
         "source": "Electricity",
-        "Value": "Number of power failures in any phases",
+        "value": "Number of power failures in any phases",
         "OBIS reference": "0-0:96.7.21.255"
     },
     "0-0:96.7.9": {
         "source": "Electricity",
-        "Value": "Number of long power failures in any phases",
+        "value": "Number of long power failures in any phases",
         "OBIS reference": "0-0:96.7.9.255"
     },
     "1-0:99.97.0": {
         "source": "Electricity",
-        "Value": "Power failure event log",
+        "value": "Power failure event log",
         "OBIS reference": "1-0:99.97.0.255"
     },
     "1-0:32.32.0": {
         "source": "Electricity",
-        "Value": "Number of voltage sags in phase L1",
+        "value": "Number of voltage sags in phase L1",
         "OBIS reference": "1-0:32.32.0.255"
     },
     "1-0:52.32.0": {
         "source": "Electricity",
-        "Value": "Number of voltage sags in phase L2",
+        "value": "Number of voltage sags in phase L2",
         "OBIS reference": "1-0:52.32.0.255"
     },
     "1-0:72.32.0": {
         "source": "Electricity",
-        "Value": "Number of voltage sags in phase L3",
+        "value": "Number of voltage sags in phase L3",
         "OBIS reference": "1-0:72.32.0.255"
     },
     "1-0:32.36.0": {
         "source": "Electricity",
-        "Value": "Number of voltage swells in phase L1",
+        "value": "Number of voltage swells in phase L1",
         "OBIS reference": "1-0:32.36.0.255"
     },
     "1-0:52.36.0": {
         "source": "Electricity",
-        "Value": "Number of voltage swells in phase L2",
+        "value": "Number of voltage swells in phase L2",
         "OBIS reference": "1-0:52.36.0.255"
     },
     "1-0:72.36.0": {
         "source": "Electricity",
-        "Value": "Number of voltage swells in phase L3",
+        "value": "Number of voltage swells in phase L3",
         "OBIS reference": "1-0:72.36.0.255"
     },
     "1-0:32.7.0": {
         "source": "Electricity",
-        "Value": "Instantaneous voltage L1",
+        "value": "Instantaneous voltage L1",
         "OBIS reference": "1-0:32.7.0.255"
     },
     "1-0:52.7.0": {
         "source": "Electricity",
-        "Value": "Instantaneous voltage L2",
+        "value": "Instantaneous voltage L2",
         "OBIS reference": "1-0:52.7.0.255"
     },
     "1-0:72.7.0": {
         "source": "Electricity",
-        "Value": "Instantaneous voltage L3",
+        "value": "Instantaneous voltage L3",
         "OBIS reference": "1-0:72.7.0.255"
     },
     "1-0:31.7.0": {
         "source": "Electricity",
-        "Value": "Instantaneous current L1",
+        "value": "Instantaneous current L1",
         "OBIS reference": "1-0:31.7.0.255"
     },
     "1-0:51.7.0": {
         "source": "Electricity",
-        "Value": "Instantaneous current L2",
+        "value": "Instantaneous current L2",
         "OBIS reference": "1-0:51.7.0.255"
     },
     "1-0:71.7.0": {
         "source": "Electricity",
-        "Value": "Instantaneous current L3",
+        "value": "Instantaneous current L3",
         "OBIS reference": "1-0:71.7.0.255"
     },
     "1-0:21.7.0": {
         "source": "Electricity",
-        "Value": "Instantaneous active power L1 (+P)",
+        "value": "Instantaneous active power L1 (+P)",
         "OBIS reference": "1-0:21.7.0.255",
         "type": "float",
         "key": "+P1",
@@ -155,7 +155,7 @@
     },
     "1-0:41.7.0": {
         "source": "Electricity",
-        "Value": "Instantaneous active power L2 (+P)",
+        "value": "Instantaneous active power L2 (+P)",
         "OBIS reference": "1-0:41.7.0.255",
         "type": "float",
         "key": "+P2",
@@ -163,7 +163,7 @@
     },
     "1-0:61.7.0": {
         "source": "Electricity",
-        "Value": "Instantaneous active power L3 (+P)",
+        "value": "Instantaneous active power L3 (+P)",
         "OBIS reference": "1-0:61.7.0.255",
         "type": "float",
         "key": "+P3",
@@ -171,7 +171,7 @@
     },
     "1-0:22.7.0": {
         "source": "Electricity",
-        "Value": "Instantaneous active power L1 (-P)",
+        "value": "Instantaneous active power L1 (-P)",
         "OBIS reference": "1-0:22.7.0.255",
         "type": "float",
         "key": "-P1",
@@ -179,7 +179,7 @@
     },
     "1-0:42.7.0": {
         "source": "Electricity",
-        "Value": "Instantaneous active power L2 (-P)",
+        "value": "Instantaneous active power L2 (-P)",
         "OBIS reference": "1-0:42.7.0.255",
         "type": "float",
         "key": "-P2",
@@ -187,7 +187,7 @@
     },
     "1-0:62.7.0": {
         "source": "Electricity",
-        "Value": "Instantaneous active power L3 (-P)",
+        "value": "Instantaneous active power L3 (-P)",
         "OBIS reference": "1-0:62.7.0.255",
         "type": "float",
         "key": "-P3",
@@ -195,17 +195,17 @@
     },
     "0-0:96.13.1": {
         "source": "Electricity",
-        "Value": "Text message codes: numeric 8 digits",
+        "value": "Text message codes: numeric 8 digits",
         "OBIS reference": "0-0:96.13.1.255"
     },
     "0-0:96.13.0": {
         "source": "Electricity",
-        "Value": "Text message max 1024 characters",
+        "value": "Text message max 1024 characters",
         "OBIS reference": "0-0:96.13.0.255"
     },
     "0-1:24.1.0": {
         "source": "Gas",
-        "Value": "Device-Type",
+        "value": "Device-Type",
         "OBIS reference": "0-n:24.1.0.255",
         "type": "float",
         "key": "G",
@@ -213,12 +213,12 @@
     },
     "0-1:96.1.0": {
         "source": "Gas",
-        "Value": "Equipment identifier",
+        "value": "Equipment identifier",
         "OBIS reference": "0-n:96.1.0.255"
     },
     "0-1:24.2.1": {
         "source": "Gas",
-        "Value": "Last 5-minute value (temperature converted), gas delivered to client in m3, including decimal values and capture time",
+        "value": "Last 5-minute value (temperature converted), gas delivered to client in m3, including decimal values and capture time",
         "OBIS reference": "0-n:24.2.1.255"
     }
 }

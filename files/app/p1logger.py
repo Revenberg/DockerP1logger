@@ -186,18 +186,31 @@ class P1Packet(object):
             if given_checksum != calculated_checksum:
                 raise P1PacketError('P1Packet with invalid checksum found')
 
-    def split(self):        
+    def split(self):
         print("==================== split 1 =========================================")
         print(self._datadetails)
-        print("==================== split 2 =========================================")        
-        pattern1 = re.compile(b'(.*?)\\((.*?)\\)\r\n')
-        pattern2 = re.compile(b'(.*?)\\((.*?)\\)')
-        for match1 in pattern1.findall(self._datagram):        
-            key1 = match1[0].decode("utf-8")            
-            if key1 not in self._datadetails:
-                print("not found: " + key1 + " = " + match1[1].decode("utf-8"))
+        print("==================== split 2 =========================================")
+        pattern = re.compile(b'(.*?)\\((.*?)\\)\r\n')
+        for match in pattern.findall(self._datagram):
+            key = match[0].decode("utf-8")
+            if key not in self._datadetails:
+                print("not found: " + key + " = " + match[1].decode("utf-8"))
             else:
-                print("found: " + key1 + " = " + match1[1].decode("utf-8"))                
+                print("found: " + key + " = " + match[1].decode("utf-8"))
+                print(self._datadetails[key]['source'])
+                print(self._datadetails[key]['value'])
+
+                if 'type' in self._datadetails[key]['type']:
+                    print(self._datadetails[key]['type'])
+                
+                if 'key' in self._datadetails[key]['key']:
+                    print(self._datadetails[key]['key'])
+                
+                if 'unit' in self._datadetails[key]['unit']:
+                    print(self._datadetails[key]['unit'])
+
+                print(match[1].decode("utf-8"))
+
             sys.stdout.flush()
 
 
@@ -216,7 +229,7 @@ def getData(device, baudrate):
 
         if do_raw_log:
             print( values )
-            
+
         json_body = {'points': [{
                             'fields': {k: v for k, v in values._keys.items()}
                                 }],
