@@ -9,7 +9,7 @@ import configparser
 from influxdb import InfluxDBClient
 
 config = configparser.RawConfigParser(allow_no_value=True)
-config.read("p1logger_config.ini")
+config.read("config.ini")
 
 ###########################
 # Variables
@@ -19,6 +19,7 @@ do_raw_log = config.getboolean('Logging', 'do_raw_log')
 influx_server = config.get('InfluxDB', 'influx_server')
 influx_port = int(config.get('InfluxDB', 'influx_port'))
 influx_database = config.get('InfluxDB', 'database')
+influx_measurement = config.get('InfluxDB', 'measurement')
 
 if __debug__:
     print("running with debug")
@@ -26,6 +27,8 @@ if __debug__:
     print(influx_port)
     print(influx_database)
     print(do_raw_log)
+    print(influx_measurement)
+
 else:
     print("running without debug")
 
@@ -48,11 +51,13 @@ try:
     print( dbclient.get_list_continuous_queries() )
     
     print("================================")
-    print( dbclient.get_list_measurements())
+    print( dbclient.get_list_measurements( influx_measurement ))
+    print("================================")
 
-    p1logger_select_clause = 'SELECT mean("+P") as "+P",mean("+P1") as "+P1",mean("+P2") as "+P2",mean("+P3") as "+P3",mean("+T") as "+T",mean("+T1") as "+T1",mean("+T2") as "+T2",mean("-P") as "-P",mean("-P1") as "-P1",mean("-P2") as "-P2",mean("-P3") as "-P3",mean("-T") as "-T",mean("-T1") as "-T1",mean("-T2") as "-T2",mean("G") as "G",mean("P") as "P"'
-    dbclient.create_continuous_query("p1logger_mean60", p1logger_select_clause + ' INTO "60_days"."p1logger" FROM "p1logger" GROUP BY time(15m)', influx_database )
-    dbclient.create_continuous_query("p1logger_meaninf", p1logger_select_clause + ' INTO "infinite"."p1logger" FROM "p1logger" GROUP BY time(30m)', influx_database )
+
+    select_clause = 'SELECT mean("+P") as "+P",mean("+P1") as "+P1",mean("+P2") as "+P2",mean("+P3") as "+P3",mean("+T") as "+T",mean("+T1") as "+T1",mean("+T2") as "+T2",mean("-P") as "-P",mean("-P1") as "-P1",mean("-P2") as "-P2",mean("-P3") as "-P3",mean("-T") as "-T",mean("-T1") as "-T1",mean("-T2") as "-T2",mean("G") as "G",mean("P") as "P"'
+    dbclient.create_continuous_query("mean60", select_clause + ' INTO "60_days"."' + influx_measurement + '" FROM "' + influx_measurement + '" GROUP BY time(15m)', influx_database )
+    dbclient.create_continuous_query("meaninf", select_clause + ' INTO "infinite"."' + influx_measurement + '" FROM "' + influx_measurement + '" GROUP BY time(30m)', influx_database )
 
     print( dbclient.get_list_continuous_queries() )
 

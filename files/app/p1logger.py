@@ -13,7 +13,7 @@ import json
 from influxdb import InfluxDBClient
 
 config = configparser.RawConfigParser(allow_no_value=True)
-config.read("p1logger_config.ini")
+config.read("config.ini")
 
 do_raw_log = config.getboolean('Logging', 'do_raw_log')
 
@@ -162,10 +162,6 @@ class P1Packet(object):
                         print("found: " + key + " = " + match[1].decode("utf-8") + " : "+ self._datadetails[key]['value'])
 
                     fieldname = self._datadetails[key]['key']
-                    #fieldname = self._datadetails[key]['value']
-                    #splitted = fieldname.split(".")
-                    #if len(splitted) > 1:
-                    #    fieldname = splitted[0]
 
                     value = match[1].decode("utf-8")
                     splitted = value.split("(")
@@ -231,8 +227,7 @@ def openDatabase():
         for db in dblist:
             if db['name'] == influx_database:
                 db_found = True
-        if not(db_found):
-            print( dbclient.get_list_continuous_queries())
+        if not(db_found):            
             sys.exit('Database ' + influx_database + ' not found, create it')
 
     except Exception as e:
