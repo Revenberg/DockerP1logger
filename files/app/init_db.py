@@ -54,12 +54,12 @@ try:
 #    print( dbclient.get_list_measurements( params={'db': influx_database} ))
     
     
-    success = dbclient.query('SHOW TAG KEYS ON "' + influx_measurement + '"',
+    success = dbclient.query('SHOW TAG KEYS ON "' + influx_database + '" FROM "' + influx_measurement + '"',
                         # params isneeded, otherwise error 'database is required' happens
                         params={'db': influx_database})
 
     print(success.raw)
-    
+
     if not success:
         print('error writing to database')
 
