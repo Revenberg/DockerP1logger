@@ -212,9 +212,9 @@ class P1Packet(object):
                         print(self._datadetails[key]['unit'])
                         value = value.replace(self._datadetails[key]['unit'], "")
                     
-                        if 'type' in self._datadetails[key]:
-                            if self._datadetails[key]['type'] == "float":
-                                value = float(value)
+                    if 'type' in self._datadetails[key]:
+                        if self._datadetails[key]['type'] == "float":
+                            value = float(value)
                     
                     print(value)
                 else:
