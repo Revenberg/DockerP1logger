@@ -80,10 +80,10 @@
         "Value": "Number of long power failures in any phases",
         "OBIS reference": "0-0:96.7.9.255"
     },
-    "1-0:99:97.0": {
+    "1-0:99.97.0": {
         "source": "Electricity",
         "Value": "Power failure event log",
-        "OBIS reference": "1-0:99:97.0.255"
+        "OBIS reference": "1-0:99.97.0.255"
     },
     "1-0:32.32.0": {
         "source": "Electricity",
