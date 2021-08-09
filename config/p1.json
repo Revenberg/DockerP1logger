@@ -220,6 +220,7 @@
         "source": "Gas",
         "value": "Last 5-minute value (temperature converted), gas delivered to client in m3, including decimal values and capture time",
         "OBIS reference": "0-n:24.2.1.255",
+        "type": "float",
         "key": "Gas reading",
         "unit": "*m3"
     }
