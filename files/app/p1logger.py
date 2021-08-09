@@ -200,13 +200,13 @@ class P1Packet(object):
                 print(self._datadetails[key]['source'])
                 print(self._datadetails[key]['value'])
 
-                if 'type' in self._datadetails[key]['type']:
+                if 'type' in self._datadetails[key]:
                     print(self._datadetails[key]['type'])
                 
-                if 'key' in self._datadetails[key]['key']:
+                if 'key' in self._datadetails[key]:
                     print(self._datadetails[key]['key'])
                 
-                if 'unit' in self._datadetails[key]['unit']:
+                if 'unit' in self._datadetails[key]:
                     print(self._datadetails[key]['unit'])
 
                 print(match[1].decode("utf-8"))
