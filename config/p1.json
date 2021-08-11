@@ -21,7 +21,7 @@
         "OBIS reference": "1-0:1.8.1.255",
         "type": "float",
         "key": "ELECTRICITY_DELIVERED_TO_CLIENT_LOW_TARIFF",
-        "unit": "*kWh"
+        "unit": "*kWh"        
     },
     "1-0:1.8.2": {
         "source": "Electricity",
@@ -60,7 +60,10 @@
         "OBIS reference": "1-0:1.7.0.255",
         "type": "float",
         "key": "ACTUAL_ELECTRICITY_POWER_DELIVERED",
-        "unit": "*kW"
+        "unit": "*kW",
+        "calculate": {
+            "SUM_ELECTRICITY": "add"
+        }
     },
     "1-0:2.7.0": {
         "source": "Electricity",
@@ -68,7 +71,10 @@
         "OBIS reference": "1-0:2.7.0.255",
         "type": "float",
         "key": "ACTUAL_ELECTRICITY_POWER_RECEIVED",
-        "unit": "*kW"
+        "unit": "*kW",
+        "calculate": {
+            "SUM_ELECTRICITY": "minus"
+        }
     },
     "0-0:96.7.21": {
         "source": "Electricity",

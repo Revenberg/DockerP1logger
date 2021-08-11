@@ -174,6 +174,19 @@ class P1Packet(object):
                     if 'type' in self._datadetails[key]:
                         if self._datadetails[key]['type'] == "float":
                             value = float(value)
+                    if 'calculate' in self._datadetails[key]:
+                        for cal in self._datadetails[key]["calculate"]:
+                            if cal not in self._keys:
+                                self._keys["cal"] = 0
+
+                            if self._datadetails[key]["calculate"][cal] == "add":
+                                self._keys["cal"] = self._keys["cal"] = + value
+
+                            if self._datadetails[key]["calculate"][cal] == "minus":
+                                self._keys["cal"] = self._keys["cal"] = - value                             
+                        if do_raw_log:
+                            print(self._keys["cal"])
+
                     if do_raw_log:
                         print(fieldname)
                         print(value)
@@ -181,7 +194,9 @@ class P1Packet(object):
             else:
                 if do_raw_log:
                     print("not found: " + key + " = " + match[1].decode("utf-8"))
-            
+        for calculate in self._datadetails["calculate"]:
+            print(calculate)
+
     def __str__(self):
         return self._datagram.decode('ascii')
 
