@@ -21,7 +21,11 @@
         "OBIS reference": "1-0:1.8.1.255",
         "type": "float",
         "key": "ELECTRICITY_DELIVERED_TO_CLIENT_LOW_TARIFF",
-        "unit": "*kWh"        
+        "unit": "*kWh",
+        "calculate": {
+            "ELECTRICITY_DELIVERED_TO": "add",
+            "ELECTRICITY": "add"
+        }
     },
     "1-0:1.8.2": {
         "source": "Electricity",
@@ -29,7 +33,11 @@
         "OBIS reference": "1-0:1.8.2.255",
         "type": "float",
         "key": "ELECTRICITY_DELIVERED_TO_CLIENT_NORMAL_TARIFF",
-        "unit": "*kWh"
+        "unit": "*kWh",
+        "calculate": {
+            "ELECTRICITY_DELIVERED_TO": "add",
+            "ELECTRICITY": "add"
+        }
     },
     "1-0:2.8.1": {
         "source": "Electricity",
@@ -37,7 +45,11 @@
         "OBIS reference": "1-0:2.8.1.255",
         "type": "float",
         "key": "ELECTRICITY_DELIVERED_BY_CLIENT_LOW_TARIFF",
-        "unit": "*kWh"
+        "unit": "*kWh",
+        "calculate": {
+            "ELECTRICITY_DELIVERED_BY": "add",
+            "ELECTRICITY": "minus"
+        }
     },
     "1-0:2.8.2": {
         "source": "Electricity",
@@ -45,7 +57,11 @@
         "OBIS reference": "1-0:2.8.2.255",
         "type": "float",
         "key": "ELECTRICITY_DELIVERED_BY_CLIENT_NORMAL_TARIFF",
-        "unit": "*kWh"
+        "unit": "*kWh",
+        "calculate": {
+            "ELECTRICITY_DELIVERED_BY": "add",
+            "ELECTRICITY": "minus"
+        }
     },
     "0-0:96.14.0": {
         "source": "Electricity",
@@ -173,7 +189,11 @@
         "OBIS reference": "1-0:21.7.0.255",
         "type": "float",
         "key": "INSTANTANEOUS_ACTIVE_POWER_L1_CONSUMED",
-        "unit": "*kW"
+        "unit": "*kW",
+        "calculate": {
+            "INSTANTANEOUS_ACTIVE_POWER_CONSUMED": "add",
+            "INSTANTANEOUS_ACTIVE_POWER": "add"
+        }
     },
     "1-0:41.7.0": {
         "source": "Electricity",
@@ -181,7 +201,11 @@
         "OBIS reference": "1-0:41.7.0.255",
         "type": "float",
         "key": "INSTANTANEOUS_ACTIVE_POWER_L2_CONSUMED",
-        "unit": "*kW"
+        "unit": "*kW",
+        "calculate": {
+            "INSTANTANEOUS_ACTIVE_POWER_CONSUMED": "add",
+            "INSTANTANEOUS_ACTIVE_POWER": "add"
+        }
     },
     "1-0:61.7.0": {
         "source": "Electricity",
@@ -189,7 +213,11 @@
         "OBIS reference": "1-0:61.7.0.255",
         "type": "float",
         "key": "INSTANTANEOUS_ACTIVE_POWER_L3_CONSUMED",
-        "unit": "*kW"
+        "unit": "*kW",
+        "calculate": {
+            "INSTANTANEOUS_ACTIVE_POWER_CONSUMED": "add",
+            "INSTANTANEOUS_ACTIVE_POWER": "add"
+        }
     },
     "1-0:22.7.0": {
         "source": "Electricity",
@@ -197,7 +225,11 @@
         "OBIS reference": "1-0:22.7.0.255",
         "type": "float",
         "key": "INSTANTANEOUS_ACTIVE_POWER_L1_DELIVERED",
-        "unit": "*kW"
+        "unit": "*kW",
+        "calculate": {
+            "INSTANTANEOUS_ACTIVE_POWER_DELIVERED": "add",
+            "INSTANTANEOUS_ACTIVE_POWER": "minus"
+        }
     },
     "1-0:42.7.0": {
         "source": "Electricity",
@@ -205,7 +237,11 @@
         "OBIS reference": "1-0:42.7.0.255",
         "type": "float",
         "key": "INSTANTANEOUS_ACTIVE_POWER_L2_DELIVERED",
-        "unit": "*kW"
+        "unit": "*kW",
+        "calculate": {
+            "INSTANTANEOUS_ACTIVE_POWER_DELIVERED": "add",
+            "INSTANTANEOUS_ACTIVE_POWER": "minus"
+        }
     },
     "1-0:62.7.0": {
         "source": "Electricity",
@@ -213,7 +249,11 @@
         "OBIS reference": "1-0:62.7.0.255",
         "type": "float",
         "key": "INSTANTANEOUS_ACTIVE_POWER_L3_DELIVERED",
-        "unit": "*kW"
+        "unit": "*kW",
+        "calculate": {
+            "INSTANTANEOUS_ACTIVE_POWER_DELIVERED": "add",
+            "INSTANTANEOUS_ACTIVE_POWER": "minus"
+        }
     },
     "0-0:96.13.1": {
         "source": "Electricity",

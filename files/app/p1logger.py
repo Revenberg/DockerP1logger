@@ -174,23 +174,19 @@ class P1Packet(object):
                     if 'type' in self._datadetails[key]:
                         if self._datadetails[key]['type'] == "float":
                             value = float(value)
-                    print(self._datadetails[key])
                     if 'calculate' in self._datadetails[key]:
-                        print("===================")
                         for cal in self._datadetails[key]["calculate"]:
-                            print(cal)
                             if cal not in self._keys:
                                 self._keys["cal"] = 0
 
-                            print(self._datadetails[key]["calculate"][cal])
                             if self._datadetails[key]["calculate"][cal] == "add":
-                                self._keys["cal"] = self._keys["cal"] = + value
+                                self._keys[cal] = self._keys[cal] + value
 
                             if self._datadetails[key]["calculate"][cal] == "minus":
-                                self._keys["cal"] = self._keys["cal"] = - value
+                                self._keys[cal] = self._keys[cal] - value
+
                         if do_raw_log:
-                            print(self._keys["cal"])
-                        print(self._keys["cal"])
+                            print(self._keys[cal])
 
                     if do_raw_log:
                         print(fieldname)
