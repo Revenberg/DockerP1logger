@@ -59,9 +59,9 @@ try:
         select_clause = ""
         for values in results.get_points():
             if (select_clause == ""):
-                select_clause = 'SELECT mean("' + print(values['fieldKey']) + '" as "' + print(values['fieldKey']) + '"'
+                select_clause = 'SELECT mean("' + values['fieldKey'] + '" as "' + values['fieldKey'] + '"'
             else:
-                select_clause = select_clause + ', mean("' + print(values['fieldKey']) + '" as "' + print(values['fieldKey']) + '"'
+                select_clause = select_clause + ', mean("' + values['fieldKey'] + '" as "' + values['fieldKey'] + '"'
         print(select_clause)
 
     select_clause = 'SELECT mean("+P") as "+P",mean("+P1") as "+P1",mean("+P2") as "+P2",mean("+P3") as "+P3",mean("+T") as "+T",mean("+T1") as "+T1",mean("+T2") as "+T2",mean("-P") as "-P",mean("-P1") as "-P1",mean("-P2") as "-P2",mean("-P3") as "-P3",mean("-T") as "-T",mean("-T1") as "-T1",mean("-T2") as "-T2",mean("G") as "G",mean("P") as "P"'
