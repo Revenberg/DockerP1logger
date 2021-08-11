@@ -177,7 +177,7 @@ class P1Packet(object):
                     if 'calculate' in self._datadetails[key]:
                         for cal in self._datadetails[key]["calculate"]:
                             if cal not in self._keys:
-                                self._keys["cal"] = 0
+                                self._keys[cal] = 0
 
                             if self._datadetails[key]["calculate"][cal] == "add":
                                 self._keys[cal] = self._keys[cal] + value
