@@ -59,14 +59,12 @@ try:
         select_clause = ""
         for values in results.get_points():
             if (select_clause == ""):
-                select_clause = 'SELECT mean("' + values['fieldKey'] + '" as "' + values['fieldKey'] + '"'
+                select_clause = 'SELECT mean("' + values['fieldKey'] + '") as "' + values['fieldKey'] + '"'
             else:
-                select_clause = select_clause + ', mean("' + values['fieldKey'] + '" as "' + values['fieldKey'] + '"'
-        print(select_clause)
-
-    select_clause = 'SELECT mean("+P") as "+P",mean("+P1") as "+P1",mean("+P2") as "+P2",mean("+P3") as "+P3",mean("+T") as "+T",mean("+T1") as "+T1",mean("+T2") as "+T2",mean("-P") as "-P",mean("-P1") as "-P1",mean("-P2") as "-P2",mean("-P3") as "-P3",mean("-T") as "-T",mean("-T1") as "-T1",mean("-T2") as "-T2",mean("G") as "G",mean("P") as "P"'
-    dbclient.create_continuous_query("mean60", select_clause + ' INTO "60_days"."' + influx_measurement + '" FROM "' + influx_measurement + '" GROUP BY time(15m)', influx_database )
-    dbclient.create_continuous_query("meaninf", select_clause + ' INTO "infinite"."' + influx_measurement + '" FROM "' + influx_measurement + '" GROUP BY time(30m)', influx_database )
+                select_clause = select_clause + ', mean("' + values['fieldKey'] + '") as "' + values['fieldKey'] + '"'
+        
+        dbclient.create_continuous_query("mean60", select_clause + ' INTO "60_days"."' + influx_measurement + '" FROM "' + influx_measurement + '" GROUP BY time(15m)', influx_database )
+        dbclient.create_continuous_query("meaninf", select_clause + ' INTO "infinite"."' + influx_measurement + '" FROM "' + influx_measurement + '" GROUP BY time(30m)', influx_database )
 
     print( dbclient.get_list_continuous_queries() )
     dbclient.close()
