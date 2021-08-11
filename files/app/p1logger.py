@@ -174,8 +174,9 @@ class P1Packet(object):
                     if 'type' in self._datadetails[key]:
                         if self._datadetails[key]['type'] == "float":
                             value = float(value)
+                    print(self._datadetails[key])
                     if 'calculate' in self._datadetails[key]:
-                        print("===================")                        
+                        print("===================")
                         for cal in self._datadetails[key]["calculate"]:
                             print(cal)
                             if cal not in self._keys:
@@ -186,9 +187,9 @@ class P1Packet(object):
                                 self._keys["cal"] = self._keys["cal"] = + value
 
                             if self._datadetails[key]["calculate"][cal] == "minus":
-                                self._keys["cal"] = self._keys["cal"] = - value                             
+                                self._keys["cal"] = self._keys["cal"] = - value
                         if do_raw_log:
-                            print(self._keys["cal"])                        
+                            print(self._keys["cal"])
                         print(self._keys["cal"])
 
                     if do_raw_log:
@@ -207,7 +208,7 @@ def getData(device, baudrate):
     meter = SmartMeter(device, baudrate)
 
     while True:
-        values = meter.read_one_packet()        
+        values = meter.read_one_packet()
 
         if do_raw_log:
             print( values )
@@ -243,7 +244,7 @@ def openDatabase():
         for db in dblist:
             if db['name'] == influx_database:
                 db_found = True
-        if not(db_found):            
+        if not(db_found):
             sys.exit('Database ' + influx_database + ' not found, create it')
         dbclient.close()
     except Exception as e:
