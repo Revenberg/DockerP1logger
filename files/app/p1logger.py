@@ -231,22 +231,4 @@ def getData(device, baudrate):
 
         time.sleep(60)
 
-def openDatabase():
-    # if the db is not found, then try to create it
-    try:
-        dbclient = InfluxDBClient(host=influx_server, port=influx_port )
-        dblist = dbclient.get_list_database()
-        db_found = False
-        for db in dblist:
-            if db['name'] == influx_database:
-                db_found = True
-        if not(db_found):
-            sys.exit('Database ' + influx_database + ' not found, create it')
-        dbclient.close()
-    except Exception as e:
-        print(e)
-        sys.exit('Error querying open influx_server: ' + influx_server)
-
-openDatabase()
-
 getData(device, baudrate)
