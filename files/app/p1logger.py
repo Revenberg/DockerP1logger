@@ -194,8 +194,6 @@ class P1Packet(object):
             else:
                 if do_raw_log:
                     print("not found: " + key + " = " + match[1].decode("utf-8"))
-        for calculate in self._datadetails["calculate"]:
-            print(calculate)
 
     def __str__(self):
         return self._datagram.decode('ascii')
