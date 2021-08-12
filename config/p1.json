@@ -171,17 +171,26 @@
     "1-0:31.7.0": {
         "source": "Electricity",
         "value": "Instantaneous current L1",
-        "OBIS reference": "1-0:31.7.0.255"
+        "OBIS reference": "1-0:31.7.0.255",
+        "type": "float",
+        "key": "INSTANTANEOUS_ACTIVECURRENT_L1",
+        "unit": "*A"
     },
     "1-0:51.7.0": {
         "source": "Electricity",
         "value": "Instantaneous current L2",
-        "OBIS reference": "1-0:51.7.0.255"
+        "OBIS reference": "1-0:51.7.0.255",
+        "type": "float",
+        "key": "INSTANTANEOUS_ACTIVECURRENT_L2",
+        "unit": "*A"
     },
     "1-0:71.7.0": {
         "source": "Electricity",
         "value": "Instantaneous current L3",
-        "OBIS reference": "1-0:71.7.0.255"
+        "OBIS reference": "1-0:71.7.0.255",
+        "type": "float",
+        "key": "INSTANTANEOUS_ACTIVECURRENT_L3",
+        "unit": "*A"        
     },
     "1-0:21.7.0": {
         "source": "Electricity",
