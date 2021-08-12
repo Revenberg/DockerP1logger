@@ -219,6 +219,9 @@ def getData(device, baudrate):
             print( json.dumps(json_body) )
             sys.stdout.flush()
 
+        print( json.dumps(json_body) )
+        sys.stdout.flush()
+
         client = InfluxDBClient(host=influx_server,
                         port=influx_port)
 
