@@ -62,11 +62,10 @@ try:
                 select_clause = 'SELECT mean("' + values['fieldKey'] + '") as "' + values['fieldKey'] + '"'
             else:
                 select_clause = select_clause + ', mean("' + values['fieldKey'] + '") as "' + values['fieldKey'] + '"'
-        
+    
         dbclient.create_continuous_query("mean60", select_clause + ' INTO "60_days"."' + influx_measurement + '" FROM "' + influx_measurement + '" GROUP BY time(15m)', influx_database )
         dbclient.create_continuous_query("meaninf", select_clause + ' INTO "infinite"."' + influx_measurement + '" FROM "' + influx_measurement + '" GROUP BY time(30m)', influx_database )
-
-    print( dbclient.get_list_continuous_queries() )
+    
     dbclient.close()
 
 except Exception as e:
