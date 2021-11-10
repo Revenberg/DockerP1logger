@@ -19,9 +19,9 @@ if [ $ex == true ]; then
     git pull
     chmod +x build.sh
 
-    docker image build -t revenberg/p1logger .
+    docker image build -t revenberg/p1logger:latest .
 
-    docker push revenberg/p1logger
+    docker push revenberg/p1logger:latest
 
     # testing: 
 
